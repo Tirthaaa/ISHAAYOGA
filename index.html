@@ -509,18 +509,42 @@
                                 </div>
                             </div>
                         </div>
+                         <!-- Review Callout (NEW) -->
+                        <div class="p-6 rounded-xl bg-pink-50 dark:bg-gray-800 shadow-lg border border-green-100 dark:border-green-900/50">
+                            <h3 class="text-2xl font-heading font-bold mb-3 text-pink-600 dark:text-pink-400">
+                                Your Feedback Matters
+                            </h3>
+                            <div class="flex items-center mb-4">
+                                <!-- Mock Star Rating -->
+                                <div class="text-[var(--accent-warm)] text-xl mr-3">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-300">4.9 Star Rating</p>
+                            </div>
+                            <a href="https://g.page/ISHAA YOGA/review?rc" target="_blank" class="w-full btn-primary bg-pink-500 hover:bg-g-700 inline-block text-center shadow-md">
+                                <i class="fab fa-google mr-2"></i> Write a Google Review
+                            </a>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-3 text-center">
+                                Help us grow the Ishaa Yoga community!
+                            </p>
+                        </div>
+                        
 
                         <!-- Embedded Map -->
-                        <div class="rounded-xl overflow-hidden shadow-2xl aspect-w-16 aspect-h-9 min-h-[200px] md:min-h-[250px] border border-[var(--border-color)]">
-                            <iframe
-                                width="100%"
-                                height="100%"
-                                frameborder="0" style="border:0"
-                                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1302.5545436529096!2d88.50268961647132!3d22.57234761468471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2sin!4v1761805215266!5m2!1sen!2sin" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ishaa Yoga Location Map"
-                    allowfullscreen=" " aria-hidden="false" tabindex="0"
-                                loading="lazy"
-                            ></iframe>
-                        </div>
+                         <div class="mt-8 lg:mt-0 w-full h-96 rounded-xl overflow-hidden shadow-2xl transition duration-500 hover:shadow-primary/50 transform hover:scale-[1.005] reveal-item">
+                        
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1302.5545436529096!2d88.50268961647132!3d22.57234761468471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2sin!4v1761805215266!5m2!1sen!2sin" width="100%" height="50" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ishaa Yoga Location Map"
+                    class="w-full h-full"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
                 </div>
             </div>
@@ -529,13 +553,18 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[var(--bg-secondary)] py-10 border-t border-[var(--border-color)]">
-        <div class="container mx-auto px-4 text-center text-[var(--text-secondary)]">
-            <p>&copy; 2025 ISHAA YOGA. All rights reserved.</p>
-            <p class="text-sm mt-2">Designed with <i class="fas fa-heart text-[var(--accent-primary)]"></i> by DEVTIRTHA.</p>
+    <footer class="bg-pink-600 dark:bg-pink-800 py-10 transition-colors duration-500">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-pink-100">
+            <p class="text-xl font-heading font-bold mb-4 text-white">ISHAA YOGA</p>
+           
+            <p class="text-sm">&copy; <span id="year"></span> ISHAA YOGA. All rights reserved.</p>
+         <p class="text-sm"> <span id="year"></span> Designed with 🤍 by DEVTIRTHA.</p>
+         
+        
         </div>
     </footer>
 
+                      
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -671,6 +700,7 @@
     </script>
 </body>
 </html>
+
 
 
 
