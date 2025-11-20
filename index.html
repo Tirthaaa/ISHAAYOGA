@@ -5,154 +5,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Join Ishaa Yoga in Kolkata for Vinyasa, Hatha, and Restorative yoga classes. Online and in-person sessions available for all levels.">
     <title>ISHAA YOGA</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- NEW FONTS: Cormorant Garamond (Headings) & Montserrat (Body) -->
+
+    <!-- FONTS: Cormorant Garamond (Headings) and Montserrat (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+
     <style>
         /* --- VARIABLES --- */
         :root {
-            --bg-primary: #f3f4f6;
-            --bg-secondary: #ffffff;
-            --text-primary: #25354b;
-            --text-secondary: #4b5563;
-            --accent-primary: #ff0a7c;
-            --accent-hover: #5c13d1;
-            --navbar-bg: rgba(243, 244, 246, 0.85);
-            --navbar-scrolled: rgba(255, 255, 255, 0.95);
-            --ishaa-yoga-color: #2dd4bf;
-            --footer-bg: #312e81;
-            --table-header: #4940f0;
-            --table-hover: #eef2ff;
-            --contact-bg: linear-gradient(135deg, #f0f9ff, #e0e7ff);
-            --social-bg: #ffffff;
-        }
-        .dark {
-            --bg-primary: #111827;
-            --bg-secondary: #1f2937;
-            --text-primary: #f9fafb;
-            --text-secondary: #9ca3af;
-            --accent-primary: #818cf8;
-            --accent-hover: #a5b4fc;
-            --navbar-bg: rgba(17, 24, 39, 0.85);
-            --navbar-scrolled: rgba(17, 24, 39, 0.98);
-            --footer-bg: #0f172a;
-            --ishaa-yoga-color: #5eead4;
-            --table-header: #4338ca;
-            --table-hover: #374151;
-            --contact-bg: linear-gradient(135deg, #1e1b4b, #312e81);
-            --social-bg: #1f2937;
+            --bg-primary: #f3f4f6; /* Light gray background */
+            --bg-secondary: #ffffff; /* White card/section background */
+            --text-primary: #1f2937; /* Dark text */
+            --text-secondary: #4b5563; /* Gray secondary text */
+            --accent-primary: #e83e8c; /* Original Bright Pink/Magenta Accent */
+            --accent-hover: #d1327c;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --nav-text: #1f2937;
+            --card-bg: #ffffff;
+            --table-header: #f9fafb;
+            --table-row: #ffffff;
+            --table-hover: #f3f4f6;
+            --border-color: #e5e7eb;
+            --footer-bg: #f108a4;
+            
+            
+            /* Logo Font (All Cormorant Garamond for clean look) */
+            --logo-font: 'Cormorant Garamond', serif; 
         }
 
-        /* --- NEW TYPOGRAPHY --- */
-        html { scroll-behavior: smooth; }
-        
+        /* Dark Mode Variables */
+        .dark {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #171717;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent-primary: #e83e8c;
+            --accent-hover: #d1327c;
+            --nav-bg: rgba(23, 23, 23, 0.95);
+            --nav-text: #f3f4f6;
+            --card-bg: #262626;
+            --table-header: #404040;
+            --table-row: #262626;
+            --table-hover: #525252;
+            --border-color: #4b5563;
+        }
+
+        /* Base Styles */
         body {
+            font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            font-family: 'Montserrat', sans-serif; /* Modern Body Font */
-        }
-        h1, h2, h3, h4, .logo-font {
-            font-family: 'Cormorant Garamond', serif; /* Elegant Heading Font */
+            transition: background-color 0.5s, color 0.5s;
         }
 
-        /* --- NAVBAR STYLES --- */
-        .navbar {
-            background-color: var(--navbar-bg);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            z-index: 50;
-        }
-        .navbar.scrolled {
-            background-color: var(--navbar-scrolled);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        .mobile-menu {
-            transition: transform 0.3s ease-in-out;
-            z-index: 40;
-        }
-        .mobile-menu.hidden {
-            transform: translateX(100%);
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
         }
 
-        /* --- DYNAMIC HOME SECTION STYLES --- */
-        #home {
+        /* Custom Logo Styling */
+        .logo {
+            font-family: var(--logo-font);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Section Title Styling */
+        .section-title {
+            color: var(--text-primary);
+            font-size: 2.5rem; /* 40px */
+            line-height: 1.2;
+            margin-bottom: 2rem;
             position: relative;
-            /* Changed from height: 100vh to min-height: 100vh to allow content to grow on mobile */
-            min-height: 100vh; 
-            overflow-x: hidden; /* Only hide horizontal overflow */
+            display: inline-block;
         }
-        
-        /* Ken Burns Background Animation */
-        .hero-bg-image {
+
+        .section-title::after {
+            content: '';
             position: absolute;
-            top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://i.ibb.co/6kv1SwZ/download-4-1-1.jpg" ');
-            background-size: cover;
-            background-position: center;
-            z-index: 0;
-            animation: kenBurns 20s ease-in-out infinite alternate;
+            bottom: -10px;
+            width: 50%;
+            height: 3px;
+            background-color: var(--accent-primary);
+            transition: width 0.3s;
         }
 
-        @keyframes kenBurns {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.15); }
+        /* Sticky Navbar */
+        .sticky-nav {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background-color: var(--nav-bg);
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.5s, border-color 0.5s;
         }
 
-        /* Glassmorphism Card */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blu(10px);
-            -webkit-backdrop-filter: blu(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        /* Custom Scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        .dark .glass-card {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--accent-primary);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: var(--bg-primary);
         }
 
         /* Typewriter Cursor */
         .cursor {
             display: inline-block;
-            width: 3px;
             background-color: var(--accent-primary);
-            animation: blink 1s infinite;
+            width: 3px;
+            height: 1.2em;
+            margin-left: 2px;
+            animation: blink 0.7s infinite;
         }
+
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
 
-        /* Scroll Down Indicator */
-        .scroll-down {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-            z-index: 10;
-            color: white;
-            opacity: 0.8;
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-10px) translateX(-50%); }
-            60% { transform: translateY(-5px) translateX(-50%); }
-        }
-
-        /* --- ANIMATIONS --- */
+        /* Fade-in Animation Classes */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -162,164 +145,133 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* --- COMPONENT STYLES --- */
-        #contact { background: var(--contact-bg); }
-        
-        .contact-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .social-icon {
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-        .social-icon:hover {
-            transform: scale(1.2);
-            color: var(--accent-hover);
-        }
-        
-        #gallery img {
-            transition: transform 0.3s ease;
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
-        #gallery img:hover {
-            transform: scale(1.02);
-        }
-        
-        /* Mobile Menu Styling */
-        #mobile-menu {
-            background-color: var(--bg-secondary);
-            width: 75%;
-            max-width: 250px;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            right: 0;
-            transform: translateX(100%);
-            transition: transform 0.3s ease-in-out;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        }
-        #mobile-menu:not(.hidden) {
-            transform: translateX(0);
-        }
     </style>
 </head>
-<body class="font-sans text-base">
-    
-    <!-- Navigation -->
-    <nav class="navbar fixed top-0 w-full">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <!-- Logo with new font -->
-            <div class="logo-font text-2xl sm:text-3xl font-bold text-[var(--accent-primary)] tracking-wide z-50 relative">ISHAA YOGA</div>
-            
-            <div class="flex items-center space-x-6">
-                <ul class="hidden md:flex space-x-6 font-medium tracking-wide">
-                    <li><a href="#home" class="text-[var(--text-primary)] hover:text-[var(--accent-hover)] transition-colors">HOME</a></li>
-                    <li><a href="#about" class="text-[var(--text-primary)] hover:text-[var(--accent-hover)] transition-colors">ABOUT</a></li>
-                    <li><a href="#gallery" class="text-[var(--text-primary)] hover:text-[var(--accent-hover)] transition-colors">GALLERY</a></li>
-                    <li><a href="#videos" class="text-[var(--text-primary)] hover:text-[var(--accent-hover)] transition-colors">VIDEOS</a></li>
-                    <li><a href="#timings" class="text-[var(--text-primary)] hover:text-[var(--accent-hover)] transition-colors">CLASSES</a></li>
-                    <li><a href="#contact" class="text-[var(--text-primary)] hover:text-[var(--accent-hover)] transition-colors">CONTACT</a></li>
-                </ul>
-                
-                <!-- Theme Toggle -->
-                <button id="theme-toggle" class="p-2 rounded-full hover:bg-[var(--table-hover)] transition-colors" aria-label="Toggle Theme">
-                    <svg id="theme-icon" class="w-6 h-6 text-[var(--text-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                    </svg>
-                </button>
-                
-                <!-- Mobile Menu Button -->
-                <button id="menu-toggle" class="md:hidden text-[var(--text-primary)] focus:outline-none z-50 relative" aria-label="Toggle Menu">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <ul id="mobile-menu" class="mobile-menu hidden md:hidden flex flex-col items-center space-y-6 pt-24 font-medium">
-            <li><a href="#home" class="text-[var(--text-primary)] hover:text-[var(--accent-hover)] transition-colors text-lg">HOME</a></li>
-            <li><a href="#about" class="text-[var(--text-primary)] hover:text-[var(--accent-hover)] transition-colors text-lg">ABOUT</a></li>
-            <li><a href="#gallery" class="text-[var(--text-primary)] hover:text-[var(--accent-hover)] transition-colors text-lg">GALLERY</a></li>
-            <li><a href="#videos" class="text-[var(--text-primary)] hover:text-[var(--accent-hover)] transition-colors text-lg">VIDEOS</a></li>
-            <li><a href="#timings" class="text-[var(--text-primary)] hover:text-[var(--accent-hover)] transition-colors text-lg">CLASSES</a></li>
-            <li><a href="#contact" class="text-[var(--text-primary)] hover:text-[var(--accent-hover)] transition-colors text-lg">CONTACT</a></li>
-        </ul>
-    </nav>
+<body class="antialiased leading-relaxed">
 
-    <!-- DYNAMIC HERO SECTION -->
-    <!-- Added pt-28 (top padding) and pb-16 (bottom padding) to prevent overlap on mobile -->
-    <section id="home" class="flex items-center justify-center relative pt-28 pb-16">
-        <!-- Animated Background Layer -->
-        <div class="absolute inset-0 overflow-hidden z-0">
-            <div class="hero-bg-image"></div>
-            <!-- Dark Overlay Gradient -->
-            <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-transparent z-[1]"></div>
-        </div>
+    <!-- Header & Navigation -->
+    <header id="main-nav" class="fixed top-0 left-0 w-full z-50 sticky-nav transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#home" class="flex-shrink-0 text-3xl font-extrabold text-[var(--accent-primary)] tracking-wider flex items-center">
+                    <span class="logo text-3xl sm:text-4xl">ISHAAYOGA</span>
+                </a>
 
-        <!-- Content Container with Glassmorphism -->
-        <div class="container mx-auto px-4 relative z-10">
-            <!-- Reduced padding on mobile (p-6) vs desktop (p-12) -->
-            <div class="glass-card max-w-3xl mx-auto p-6 sm:p-12 rounded-2xl text-center fade-in visible border border-white/20">
-                <!-- Reduced font size on mobile (text-3xl) -->
-                <h1 class="text-3xl sm:text-6xl md:text-7xl font-bold mb-4 sm:mb-6 text-white leading-tight drop-shadow-lg">
-                    Discover Inner Peace with <span class="text-[var(--ishaa-yoga-color)]">ISHAA YOGA</span>
-                </h1>
-                
-                <!-- Adjusted margins and text size for mobile -->
-                <p class="text-base sm:text-xl md:text-2xl mb-8 sm:mb-10 text-gray-100 font-light tracking-wide">
-                    Unlock your potential. Find your <span class="font-semibold text-[var(--ishaa-yoga-color)]" id="typewriter-text"></span><span class="cursor">&nbsp;</span>
-                    <br class="hidden sm:block">through the ancient practice of yoga.
-                </p>
-                
-                <!-- Stacked buttons on mobile with gap-4 -->
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#contact" class="bg-[var(--accent-primary)] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[var(--accent-hover)] transition-all transform hover:scale-105 font-semibold tracking-wide shadow-lg border border-transparent text-sm sm:text-base">
-                        Start Your Journey
-                    </a>
-                    <a href="#videos" class="bg-white/10 border border-white/40 backdrop-blur-sm text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-white/20 transition-all font-semibold tracking-wide text-sm sm:text-base">
-                        Watch Videos
-                    </a>
+                <!-- Desktop Menu: Now visible only from LG breakpoint -->
+                <nav class="hidden lg:flex space-x-8">
+                    <a href="#home" class="text-[var(--nav-text)] hover:text-[var(--accent-primary)] transition duration-150 font-medium">Home</a>
+                    <a href="#about" class="text-[var(--nav-text)] hover:text-[var(--accent-primary)] transition duration-150 font-medium">About</a>
+                    <a href="#gallery" class="text-[var(--nav-text)] hover:text-[var(--accent-primary)] transition duration-150 font-medium">Gallery</a>
+                    <a href="#videos" class="text-[var(--nav-text)] hover:text-[var(--accent-primary)] transition duration-150 font-medium">Videos</a>
+                    <a href="#timings" class="text-[var(--nav-text)] hover:text-[var(--accent-primary)] transition duration-150 font-medium">Classes</a>
+                    <a href="#contact" class="text-[var(--nav-text)] hover:text-[var(--accent-primary)] transition duration-150 font-medium">Contact</a>
+                </nav>
+
+                <!-- Dark Mode Toggle & Mobile Menu Button -->
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-full text-[var(--nav-text)] hover:bg-[var(--table-hover)] transition-colors">
+                        <i id="theme-icon" class="fas fa-moon text-lg"></i>
+                    </button>
+
+                    <!-- Hamburger button: Now hidden only from LG breakpoint -->
+                    <button id="mobile-menu-button" class="lg:hidden p-2 rounded-md text-[var(--nav-text)] hover:bg-[var(--table-hover)] transition-colors">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
                 </div>
             </div>
         </div>
 
-        <!-- Scroll Down Indicator (hidden on very small screens if needed, but kept here for now) -->
-        <a href="#about" class="scroll-down flex flex-col items-center hover:text-[var(--ishaa-yoga-color)] transition-colors hidden sm:flex">
-            <span class="text-xs uppercase tracking-widest mb-2">Scroll</span>
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-            </svg>
-        </a>
-    </section>
+        <!-- Mobile Menu (Hidden by default): Now hidden only from LG breakpoint -->
+        <div id="mobile-menu" class="hidden lg:hidden absolute w-full top-20 bg-[var(--nav-bg)] shadow-xl border-t border-[var(--border-color)]">
+            <a href="#home" class="block py-3 px-6 text-[var(--nav-text)] hover:bg-[var(--table-hover)] font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Home</a>
+            <a href="#about" class="block py-3 px-6 text-[var(--nav-text)] hover:bg-[var(--table-hover)] font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a>
+            <a href="#gallery" class="block py-3 px-6 text-[var(--nav-text)] hover:bg-[var(--table-hover)] font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Gallery</a>
+            <a href="#videos" class="block py-3 px-6 text-[var(--nav-text)] hover:bg-[var(--table-hover)] font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Videos</a>
+            <a href="#timings" class="block py-3 px-6 text-[var(--nav-text)] hover:bg-[var(--table-hover)] font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Classes</a>
+            <a href="#contact" class="block py-3 px-6 text-[var(--nav-text)] hover:bg-[var(--table-hover)] font-medium" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contact</a>
+        </div>
+    </header>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 sm:py-24 bg-[var(--bg-secondary)]">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center text-[var(--text-primary)] mb-12">About Me</h2>
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/3 fade-in">
-                    <img src="https://i.ibb.co/s9hkLRGH/487336973-3016659258510206-571592738246127783-n.jpg" alt="Ishani Yoga Instructor" class="rounded-full w-64 h-64 sm:w-72 sm:h-72 mx-auto object-cover shadow-2xl border-4 border-[var(--accent-primary)]">
+    <main>
+        <!-- Home Section (Solid Background, Mobile-first Layout) -->
+        <section id="home" class="flex items-center relative min-h-screen py-28 bg-[var(--bg-secondary)]">
+
+            <!-- Content Container -->
+            <div class="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
+
+                <!-- Right Column: Instructor Photo (ORDERED FIRST ON MOBILE) -->
+                <div class="md:order-last flex justify-center w-full md:w-1/2 fade-in mb-8 md:mb-0">
+                    <img src="https://i.ibb.co/s9hkLRGH/487336973-3016659258510206-571592738246127783-n.jpg" alt="Ishani Yoga Instructor"
+                         class="rounded-full w-52 h-52 sm:w-64 sm:h-64 lg:w-96 lg:h-96 object-cover shadow-2xl border-4 border-[var(--accent-primary)] transition-transform duration-500 hover:scale-[1.03]">
                 </div>
-                <div class="md:w-2/3 md:pl-4 fade-in">
-                    <p class="text-[var(--text-primary)] mb-6 text-base sm:text-lg leading-relaxed font-light">Hello! I'm <span class="font-semibold text-[var(--accent-primary)]">Ishani</span>, and I'm passionate about sharing the transformative power of yoga. With over 5 years of dedicated practice and teaching experience, I've had the privilege of guiding countless individuals on their journey to holistic well-being.</p>
-                    <p class="text-[var(--text-primary)] mb-6 text-base sm:text-lg leading-relaxed font-light">My journey with yoga began during a challenging period in my life, seeking peace and strength. Since then, it has become an integral part of my life, helping me to connect deeply with my body, mind, and spirit. I believe that yoga is for everyone, regardless of age, flexibility, or experience level.</p>
-                    <p class="text-[var(--text-primary)] text-base sm:text-lg leading-relaxed font-light">My teaching style focuses on creating a supportive and inclusive environment where students can explore their limits safely, cultivate mindfulness, and find joy in movement. I specialize in <span class="font-semibold">Vinyasa, Hatha, and Restorative Yoga</span>. Join me on the mat!</p>
+
+                <!-- Left Column: Text Content (ORDERED SECOND ON MOBILE) -->
+                <div class="w-full md:w-1/2 text-center md:text-left fade-in">
+                    <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold mb-4 sm:mb-6 text-[var(--text-primary)] leading-tight drop-shadow-sm">
+                        Discover Inner Peace with 
+                        <span class="text-[var(--accent-primary)] block mt-2">ISHAAYOGA</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-10 text-[var(--text-secondary)] font-light tracking-wide">
+                        Unlock your potential. Find your <span class="font-semibold text-[var(--accent-primary)]" id="typewriter-text"></span><span class="cursor"> </span>
+                        <br class="hidden sm:block">through the ancient practice of yoga.
+                    </p>
+
+                    <!-- Buttons aligned to the center on mobile, left on desktop -->
+                    <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                        <a href="#contact" class="bg-[var(--accent-primary)] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[var(--accent-hover)] transition-all transform hover:scale-105 font-semibold tracking-wide shadow-lg border border-transparent text-sm sm:text-base">
+                            Start Your Journey
+                        </a>
+                        <a href="#videos" class="border border-[var(--text-secondary)] text-[var(--text-primary)] px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[var(--table-hover)] transition-all font-semibold tracking-wide text-sm sm:text-base">
+                            Watch Videos
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 sm:py-32 bg-[var(--bg-primary)]">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+
+                    <!-- Right: Instructor Profile (ORDERED FIRST ON MOBILE) -->
+                    <div class="lg:order-last lg:w-1/2 flex flex-col items-center text-center w-full lg:items-start lg:text-left mt-12 lg:mt-0 fade-in">
+                        <img src="https://i.ibb.co/s9hkLRGH/487336973-3016659258510206-571592738246127783-n.jpg" alt="Ishani Yoga Instructor" class="rounded-full w-48 h-48 object-cover shadow-xl mb-6 border-4 border-[var(--accent-primary)]">
+                        <h3 class="text-3xl font-semibold text-[var(--text-primary)]">Ishani - Founder & Instructor</h3>
+                        <p class="text-[var(--text-secondary)] mt-2 mb-4 text-xl font-light">
+                            Certified Yoga instructor.
+                            5+ Years of Experience.
+                        </p>
+                        <p class="text-[var(--text-secondary)] leading-relaxed max-w-lg">
+                            Ishani's passion is making yoga accessible and transformative. She specializes in guiding practitioners through dynamic Vinyasa flows and deeply therapeutic Restorative poses, ensuring a supportive environment for all levels.
+                        </p>
+                    </div>
+
+                    <!-- Left: Text Content (ORDERED SECOND ON MOBILE) -->
+                    <div class="lg:w-1/2 w-full fade-in order-first lg:order-none">
+                        <h2 class="section-title text-[var(--text-primary)] mb-10 text-center lg:text-left mx-auto lg:mx-0">
+                            Our Philosophy
+                        </h2>
+                        <h3 class="text-3xl font-semibold mb-6 text-[var(--accent-primary)] text-center lg:text-left">
+                            The Practice of Presence
+                        </h3>
+                        <p class="text-[var(--text-secondary)] mb-6 leading-relaxed text-lg text-center lg:text-left">
+                            At ISHAA YOGA, we believe that yoga is more than just physical postures (asanas). It is a journey toward self-discovery, cultivating mindfulness, and achieving holistic well-being. Our practice integrates breathwork (pranayama), movement, and meditation to help you find balance in both body and mind.
+                        </p>
+                        <p class="text-[var(--text-secondary)] leading-relaxed text-lg border-l-4 border-[var(--accent-primary)] pl-4 italic text-center lg:text-left">
+                            "Yoga is the journey of the self, through the self, to the self." - The Bhagavad Gita
+                        </p>
+                    </div>
+
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-16 sm:py-24 bg-[var(--bg-primary)]">
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-16 sm:py-24 bg-[var(--bg-primary)]">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl sm:text-4xl font-bold text-center text-[var(--text-primary)] mb-12">Photo Gallery</h2>
             <!-- Changed grid gap for better aesthetics -->
@@ -364,293 +316,323 @@
         </div>
     </section>
 
-    <!-- Videos Section -->
-    <section id="videos" class="py-16 sm:py-24 bg-[var(--bg-secondary)]">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center text-[var(--text-primary)] mb-12">Yoga Videos</h2>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                <div class="bg-[var(--bg-primary)] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow fade-in">
-                    <div class="relative pb-[56.25%] h-0 overflow-hidden">
-                        <!-- Added loading="lazy" for performance -->
-                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/5GzciJXOEsY?si=hfKN82ANP8qL93K6" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Yoga Flow Video 1"></iframe>
+        <!-- Videos Section -->
+        <section id="videos" class="py-24 sm:py-32 bg-[var(--bg-primary)]">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title text-center mx-auto mb-16 fade-in">
+                    Online Resources
+                </h2>
+
+                <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+                    <!-- YouTube Channel Link -->
+                    <div class="lg:w-1/3 p-6 sm:p-8 bg-[var(--card-bg)] rounded-xl shadow-lg border border-[var(--border-color)] fade-in">
+                        <i class="fab fa-youtube text-5xl text-red-600 mb-4"></i>
+                        <h3 class="text-3xl font-semibold mb-3 text-[var(--text-primary)]">
+                            Follow Our Channel
+                        </h3>
+                        <p class="text-[var(--text-secondary)] mb-4">
+                            Subscribe for free tutorials, guided meditations, and full class recordings. Don't miss out on new content!
+                        </p>
+                        <a href="https://youtube.com/@ishanin2?si=rpEV_UVfw16Q7b_S" target="_blank" class="text-[var(--accent-primary)] font-semibold hover:text-[var(--accent-hover)] transition-colors flex items-center">
+                            Visit ISHAA YOGA on YouTube
+                            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-2">Yoga for upper back stiffness</h3>
-                        <p class="text-[var(--text-secondary)] font-light">Suffering from upper back stiffness? Try this flow.</p>
-                    </div>
-                </div>
-                <div class="bg-[var(--bg-primary)] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow fade-in">
-                    <div class="relative pb-[56.25%] h-0 overflow-hidden">
-                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/iDmGW8UpOg4?si=6HBr5rJITmTl1Mwq" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Yoga Flow Video 2"></iframe>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-2">Surya Namaskar A and B</h3>
-                        <p class="text-[var(--text-secondary)] font-light">Yoga for Runners. Sun Salutation A and B guide.</p>
-                    </div>
-                </div>
-                <div class="bg-[var(--bg-primary)] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow fade-in">
-                    <div class="relative pb-[56.25%] h-0 overflow-hidden">
-                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/NfKdX4fGoVM?si=Fmu3jr4zSdH61YxN" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Yoga Flow Video 3"></iframe>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-2">Yoga for Thyroid</h3>
-                        <p class="text-[var(--text-secondary)] font-light">Some effective yoga asanas to help manage thyroid.</p>
-                    </div>
-                </div>
-                <div class="bg-[var(--bg-primary)] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow fade-in">
-                    <div class="relative pb-[56.25%] h-0 overflow-hidden">
-                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/s__K1praTsA?si=kgUhpxQUc1URyLIC" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Yoga Flow Video 4"></iframe>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-2">Yoga for Back Pain</h3>
-                        <p class="text-[var(--text-secondary)] font-light">Best yoga asanas to strengthen your spine and release pain.</p>
+
+                    <!-- Video Embed (Main Focus Video) -->
+                    <div class="lg:w-2/3 w-full fade-in">
+                        <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-2xl">
+                            <!-- Using lazy loading for better performance -->
+                            <iframe
+                                width="100%"
+                                height="100%"
+                                data-src="https://www.youtube.com/embed/5GzciJXOEsY?si=hfKN82ANP8qL93K6"
+                                title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                                loading="lazy"
+                                id="main-video-iframe"
+                                class="w-full h-full min-h-[300px] bg-[var(--bg-secondary)]"
+                            ></iframe>
+                        </div>
+                        <p class="text-center text-[var(--text-secondary)] mt-4 text-sm italic">Featured Video: Suffering from upper back stiffness? Try this flow.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Class Timings Section -->
-    <section id="timings" class="py-16 sm:py-24 bg-[var(--bg-primary)]">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center text-[var(--text-primary)] mb-12">Class Timings</h2>
-            <!-- Changed overflow-hidden to overflow-x-auto for scrolling -->
-            <div class="overflow-x-auto rounded-xl shadow-lg bg-white">
-                <!-- Added min-w-[600px] to force table width and trigger scroll on mobile -->
-                <table class="w-full text-left border-collapse min-w-[600px]">
-                    <thead>
-                        <tr class="bg-[var(--table-header)] text-white">
-                            <th class="p-4 font-semibold">Day</th>
-                            <th class="p-4 font-semibold">Time</th>
-                            <th class="p-4 font-semibold">Class Type</th>
-                            <th class="p-4 font-semibold">Level</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-[var(--text-primary)] bg-[var(--bg-secondary)]">
-                        <tr class="border-b border-gray-200 hover:bg-[var(--table-hover)] transition-colors">
-                            <td class="p-4">Monday</td>
-                            <td class="p-4">7:00 AM - 8:00 AM</td>
-                            <td class="p-4">Vinyasa Flow</td>
-                            <td class="p-4"><span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">All Levels</span></td>
-                        </tr>
-                        <tr class="border-b border-gray-200 hover:bg-[var(--table-hover)] transition-colors">
-                            <td class="p-4">Wednesday</td>
-                            <td class="p-4">6:30 PM - 7:30 PM</td>
-                            <td class="p-4">Hatha Yoga</td>
-                            <td class="p-4"><span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">Beginner</span></td>
-                        </tr>
-                        <tr class="border-b border-gray-200 hover:bg-[var(--table-hover)] transition-colors">
-                            <td class="p-4">Friday</td>
-                            <td class="p-4">9:00 AM - 10:00 AM</td>
-                            <td class="p-4">Restorative Yoga</td>
-                            <td class="p-4"><span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">All Levels</span></td>
-                        </tr>
-                        <tr class="hover:bg-[var(--table-hover)] transition-colors">
-                            <td class="p-4">Saturday</td>
-                            <td class="p-4">8:00 AM - 9:30 AM</td>
-                            <td class="p-4">Power Vinyasa</td>
-                            <td class="p-4"><span class="px-2 py-1 text-xs rounded-full bg-purple-100 text-purple-800">Intermediate</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <p class="text-center text-[var(--text-secondary)] mt-6 text-sm font-light">*All classes are currently held online via Zoom. In-person classes may be available soon.</p>
-        </div>
-    </section>
+        <!-- Classes Section (Timings) -->
+        <section id="timings" class="py-24 sm:py-32 bg-[var(--bg-secondary)]">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title text-center mx-auto mb-16 fade-in">
+                    Class Schedule
+                </h2>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 sm:py-24">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center text-[var(--text-primary)] mb-12">Get in Touch</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <!-- Contact Form -->
-                <div class="contact-card bg-[var(--bg-secondary)] p-8 rounded-2xl shadow-xl">
-                    <h3 class="text-2xl font-semibold text-[var(--text-primary)] mb-6">Send a Message</h3>
-                    <form action="https://formspree.io/f/xjkjdqpo" method="POST" class="space-y-6">
-                        <div>
-                            <label class="block text-sm font-medium text-[var(--text-secondary)] mb-2">Name</label>
-                            <input type="text" name="name" placeholder="Your Name" class="contact-input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)] text-[var(--text-primary)] bg-[var(--bg-primary)] transition-all" required>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-[var(--text-secondary)] mb-2">Email</label>
-                            <input type="email" name="_replyto" placeholder="your@email.com" class="contact-input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)] text-[var(--text-primary)] bg-[var(--bg-primary)] transition-all" required>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-[var(--text-secondary)] mb-2">Message</label>
-                            <textarea name="message" placeholder="How can I help you?" class="contact-input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)] h-32 text-[var(--text-primary)] bg-[var(--bg-primary)] transition-all" required></textarea>
-                        </div>
-                        <button type="submit" class="contact-button w-full bg-[var(--accent-primary)] text-white py-3 rounded-lg font-semibold hover:bg-[var(--accent-hover)] transition-all transform hover:scale-105 shadow-md">Send Message</button>
-                    </form>
+                <div class="overflow-x-auto shadow-xl rounded-xl border border-[var(--border-color)] fade-in">
+                    <!-- The table will handle scrolling on small screens due to overflow-x-auto -->
+                    <table class="min-w-full divide-y divide-[var(--border-color)]">
+                        <thead class="bg-[var(--table-header)]">
+                            <tr>
+                                <th scope="col" class="px-6 py-4 text-left text-sm font-bold text-[var(--text-primary)] uppercase tracking-wider">
+                                    Day
+                                </th>
+                                <th scope="col" class="px-6 py-4 text-left text-sm font-bold text-[var(--text-primary)] uppercase tracking-wider">
+                                    Class Type
+                                </th>
+                                <th scope="col" class="px-6 py-4 text-left text-sm font-bold text-[var(--text-primary)] uppercase tracking-wider">
+                                    Time (IST)
+                                </th>
+                                <th scope="col" class="px-6 py-4 text-left text-sm font-bold text-[var(--text-primary)] uppercase tracking-wider">
+                                    Focus
+                                </th>
+                                <th scope="col" class="px-6 py-4 text-left text-sm font-bold text-[var(--text-primary)] uppercase tracking-wider">
+                                    Level
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[var(--border-color)]">
+                            <!-- Monday -->
+                            <tr class="bg-[var(--table-row)] text-[var(--text-secondary)] hover:bg-[var(--table-hover)] transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap font-semibold">Monday</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-[var(--accent-primary)] font-medium">Vinyasa Flow</td>
+                                <td class="px-6 py-4 whitespace-nowrap">7:00 AM - 8:00 AM</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Dynamic Movement & Breath</td>
+                                <td class="px-6 py-4 whitespace-nowrap">All Levels</td>
+                            </tr>
+                            <!-- Wednesday -->
+                            <tr class="bg-[var(--table-row)] text-[var(--text-secondary)] hover:bg-[var(--table-hover)] transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap font-semibold">Wednesday</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-[var(--accent-primary)] font-medium">Hatha Yoga</td>
+                                <td class="px-6 py-4 whitespace-nowrap">6:30 PM - 7:30 PM</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Foundations & Alignment</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Beginner/Intermediate</td>
+                            </tr>
+                            <!-- Friday -->
+                            <tr class="bg-[var(--table-row)] text-[var(--text-secondary)] hover:bg-[var(--table-hover)] transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap font-semibold">Friday</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-[var(--accent-primary)] font-medium">Restorative Yoga</td>
+                                <td class="px-6 py-4 whitespace-nowrap">8:00 PM - 9:00 PM</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Deep Relaxation & Hold</td>
+                                <td class="px-6 py-4 whitespace-nowrap">All Levels</td>
+                            </tr>
+                            <!-- Saturday -->
+                            <tr class="bg-[var(--table-row)] text-[var(--text-secondary)] hover:bg-[var(--table-hover)] transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap font-semibold">Saturday</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-[var(--accent-primary)] font-medium">Power Vinyasa</td>
+                                <td class="px-6 py-4 whitespace-nowrap">9:00 AM - 10:15 AM</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Strength & Stamina</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Intermediate/Advanced</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                
-                <!-- Contact Info & Map -->
-                <div class="contact-card bg-[var(--bg-secondary)] p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-2xl font-semibold text-[var(--text-primary)] mb-6">Contact Information</h3>
-                        <div class="space-y-6">
-                            <div class="flex items-start space-x-4">
-                                <div class="bg-[var(--table-hover)] p-3 rounded-full text-[var(--accent-primary)]">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    </svg>
+
+                <p class="mt-8 text-center text-lg text-[var(--accent-primary)] font-medium fade-in">
+                    *All classes are currently held online via Zoom. In-person classes may be available soon.
+                </p>
+
+                <div class="text-center mt-12 fade-in">
+                    <a href="#contact" class="bg-[var(--accent-primary)] text-white px-8 py-4 rounded-full hover:bg-[var(--accent-hover)] transition-all transform hover:scale-105 font-semibold shadow-lg text-lg">
+                        Enroll Now
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 sm:py-32 bg-[var(--bg-primary)]">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title text-center mx-auto mb-16 fade-in">
+                    Get in Touch
+                </h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Contact Form -->
+                    <div class="fade-in">
+                        <div class="p-8 sm:p-10 bg-[var(--card-bg)] rounded-xl shadow-2xl border border-[var(--border-color)]">
+                            <h3 class="text-3xl font-semibold mb-6 text-[var(--text-primary)]">Send a Message</h3>
+                            <form action="https://formspree.io/f/xjkjdqpo" method="POST" class="space-y-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Name</label>
+                                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-[var(--border-color)] rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] bg-transparent text-[var(--text-primary)]">
                                 </div>
                                 <div>
-                                    <p class="font-semibold text-[var(--text-primary)]">Studio Address</p>
-                                    <p class="text-[var(--text-secondary)] font-light">Patharghata, Action Area 3, New Town<br>Kolkata, West Bengal, 700135</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-4">
-                                <div class="bg-[var(--table-hover)] p-3 rounded-full text-[var(--accent-primary)]">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                                    </svg>
+                                    <label for="email" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Email</label>
+                                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-[var(--border-color)] rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] bg-transparent text-[var(--text-primary)]">
                                 </div>
                                 <div>
-                                    <p class="font-semibold text-[var(--text-primary)]">Phone</p>
-                                    <a href="tel:8101322806" class="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">8101322806</a>
+                                    <label for="message" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Message</label>
+                                    <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-[var(--border-color)] rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] bg-transparent text-[var(--text-primary)]"></textarea>
                                 </div>
+                                <button type="submit" class="w-full bg-[var(--accent-primary)] text-white px-6 py-3 rounded-lg hover:bg-[var(--accent-hover)] transition-colors font-semibold shadow-md">
+                                    Submit Inquiry
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Contact Details & Map -->
+                    <div class="space-y-8 fade-in">
+                        <!-- Contact Details Card -->
+                        <div class="p-8 sm:p-10 bg-[var(--card-bg)] rounded-xl shadow-2xl border border-[var(--border-color)]">
+                            <h3 class="text-3xl font-semibold mb-6 text-[var(--text-primary)]">Find Us</h3>
+                            <div class="space-y-5 text-[var(--text-secondary)]">
+                                <p class="flex items-start">
+                                    <i class="fas fa-map-marker-alt text-[var(--accent-primary)] mt-1 mr-3 text-xl flex-shrink-0"></i>
+                                    <span class="leading-relaxed">Patharghata, Action Area 3, New Town, <br>Kolkata, West Bengal, 700135</span>
+                                </p>
+                                <!-- Phone -->
+                                <p class="flex items-center">
+                                    <i class="fas fa-phone-alt text-[var(--accent-primary)] mr-3 text-xl flex-shrink-0"></i>
+                                    <a href="tel:8101322806" class="hover:text-[var(--accent-primary)] transition-colors">8101322806</a>
+                                </p>
+                                <!-- Email -->
+                                <p class="flex items-start">
+                                    <i class="fas fa-envelope text-[var(--accent-primary)] mt-1 mr-3 text-xl flex-shrink-0"></i>
+                                    <a href="mailto:ishaninaskar96085@gmail.com" class="hover:text-[var(--accent-primary)] transition-colors min-w-0 break-all">ishaninaskar96085@gmail.com</a>
+                                </p>
                             </div>
-                            <div class="flex items-center space-x-4">
-                                <div class="bg-[var(--table-hover)] p-3 rounded-full text-[var(--accent-primary)]">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="font-semibold text-[var(--text-primary)]">Email</p>
-                                    <!-- ADDED break-all TO FIX OVERFLOW -->
-                                    <a href="mailto:ishaninaskar96085@gmail.com" class="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors break-all">ishaninaskar96085@gmail.com</a>
+                            <div class="mt-8 pt-6 border-t border-[var(--border-color)]">
+                                <h4 class="text-xl font-semibold mb-3 text-[var(--text-primary)]">Connect</h4>
+                                <div class="flex space-x-4">
+                                    <a href="" target="_blank" class="text-[var(--text-secondary)] hover:text-blue-600 transition-colors text-3xl">
+                                        <i class="fab fa-facebook-square"></i>
+                                    </a>
+                                    <a href="#" target="_blank" class="text-[var(--text-secondary)] hover:text-pink-600 transition-colors text-3xl">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="https://youtube.com/@ishanin2?si=rpEV_UVfw16Q7b_S" target="_blank" class="text-[var(--text-secondary)] hover:text-red-600 transition-colors text-3xl">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Embedded Map -->
-                    <div class="mt-8 rounded-xl overflow-hidden shadow-md border border-gray-200">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1302.5545436529096!2d88.50268961647132!3d22.57234761468471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2sin!4v1761805215266!5m2!1sen!2sin" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ishaa Yoga Location Map"></iframe>
+
+                        <!-- Embedded Map -->
+                        <div class="rounded-xl overflow-hidden shadow-2xl aspect-w-16 aspect-h-9 min-h-[200px] md:min-h-[250px] border border-[var(--border-color)]">
+                            <iframe
+                                width="100%"
+                                height="100%"
+                                frameborder="0" style="border:0"
+                                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1302.5545436529096!2d88.50268961647132!3d22.57234761468471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2sin!4v1761805215266!5m2!1sen!2sin" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ishaa Yoga Location Map"
+                    allowfullscreen=" " aria-hidden="false" tabindex="0"
+                                loading="lazy"
+                            ></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Social Media Section -->
-    <section id="social-media" class="py-10 bg-[var(--social-bg)] border-t border-gray-100">
-        <div class="container mx-auto px-4 text-center">
-            <h3 class="text-xl font-semibold text-[var(--text-primary)] mb-6">Connect With Me</h3>
-            <div class="flex justify-center space-x-8">
-                <a href="https://www.facebook.com/profile.php?id=100004984845826" class="social-icon text-[var(--accent-primary)] hover:text-[var(--accent-hover)]">
-                    <i class="fab fa-facebook fa-2x"></i>
-                </a>
-                <a href="https://wa.me/+918101322806" class="social-icon text-[var(--accent-primary)] hover:text-[var(--accent-hover)]">
-                    <i class="fab fa-whatsapp fa-2x"></i>
-                </a>
-                <a href="https://www.instagram.com/ishaayoga?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon text-[var(--accent-primary)] hover:text-[var(--accent-hover)]">
-                    <i class="fab fa-instagram fa-2x"></i>
-                </a>
-                <a href="https://youtube.com/@ishanin2?si=rpEV_UVfw16Q7b_S" class="social-icon text-[var(--accent-primary)] hover:text-[var(--accent-hover)]">
-                    <i class="fab fa-youtube fa-2x"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-[var(--footer-bg)] text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <div class="mb-4 logo-font text-2xl font-bold tracking-wider">ISHAA YOGA</div>
-            <p class="text-gray-400 text-sm mb-4">© 2025 ISHAA YOGA. All rights reserved.</p>
-            <p class="text-gray-500 text-xs">Designed with ❤️ by DEVTIRTHA</p>
+    <footer class="bg-black-600 dark:bg-pink-800 py-10 transition-colors duration-500">
+        <div class="container mx-auto px-4 text-center text-[var(--text-secondary)]">
+            <p>&copy; 2025 ISHAA YOGA. All rights reserved.</p>
+            <p class="text-sm mt-2">Designed with <i class="fas fa-heart text-[var(--accent-primary)]"></i> by DEVTIRTHA.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- THEME TOGGLE ---
+            // --- GENERAL DOM ELEMENTS ---
+            const html = document.documentElement;
+            const mainNav = document.getElementById('main-nav');
             const themeToggle = document.getElementById('theme-toggle');
             const themeIcon = document.getElementById('theme-icon');
-            const htmlElement = document.documentElement;
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
 
-            // Check for saved theme preference
-            if (localStorage.getItem('theme') === 'dark') {
-                htmlElement.classList.add('dark');
+            // --- THEME TOGGLE (Dark/Light Mode) ---
+            const currentTheme = localStorage.getItem('theme');
+
+            if (currentTheme) {
+                html.classList.remove('light', 'dark');
+                html.classList.add(currentTheme);
+                themeIcon.className = currentTheme === 'dark' ? 'fas fa-sun text-lg' : 'fas fa-moon text-lg';
+            } else {
+                // Default to light mode if nothing is set
+                html.classList.add('light');
             }
 
-            const updateIcon = () => {
-                if (htmlElement.classList.contains('dark')) {
-                    // Moon icon
-                    themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.752 15.002A9.718 9.718 0 0112 21c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 12c0 5.385 4.365 9.75 9.75 9.75 5.385 0 9.75-4.365 9.75-9.75 0-1.33-.266-2.597-.748-3.752z"/>';
-                } else {
-                    // Sun icon
-                    themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>';
-                }
-            };
-
-            // Initialize icon
-            updateIcon();
-
             themeToggle.addEventListener('click', () => {
-                htmlElement.classList.toggle('dark');
-                localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
-                updateIcon();
-            });
-
-            // --- MOBILE MENU ---
-            const menuToggle = document.getElementById('menu-toggle');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
-                    mobileMenu.classList.add('hidden');
+                if (html.classList.contains('dark')) {
+                    html.classList.remove('dark');
+                    html.classList.add('light');
+                    localStorage.setItem('theme', 'light');
+                    themeIcon.className = 'fas fa-moon text-lg';
+                } else {
+                    html.classList.remove('light');
+                    html.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                    themeIcon.className = 'fas fa-sun text-lg';
                 }
             });
 
-            menuToggle.addEventListener('click', () => {
+            // --- MOBILE MENU TOGGLE ---
+            mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
 
-            // --- SMOOTH SCROLL & NAV HIGHLIGHT ---
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        mobileMenu.classList.add('hidden'); // Close menu on click
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
-
-            // --- SCROLL NAV EFFECT ---
+            // --- STICKY NAV EFFECT ---
             window.addEventListener('scroll', () => {
-                const navbar = document.querySelector('.navbar');
                 if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
+                    mainNav.classList.add('shadow-lg');
                 } else {
-                    navbar.classList.remove('scrolled');
+                    mainNav.classList.remove('shadow-lg');
                 }
             });
 
-            // --- FADE IN ANIMATION ---
-            const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-            const observer = new IntersectionObserver((entries) => {
+            // --- SMOOTH SCROLL ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    // Close mobile menu on click
+                    if (!mobileMenu.classList.contains('hidden')) {
+                         mobileMenu.classList.add('hidden');
+                    }
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // --- LAZY LOAD IFRAME (For performance) ---
+            const lazyLoadIframes = () => {
+                const iframes = document.querySelectorAll('iframe[data-src]');
+                iframes.forEach(iframe => {
+                    // Check if the iframe is close to or in the viewport
+                    if (iframe.getBoundingClientRect().top < window.innerHeight + 100 && iframe.dataset.src) {
+                        iframe.src = iframe.dataset.src;
+                        iframe.removeAttribute('data-src');
+                    }
+                });
+            };
+            window.addEventListener('scroll', lazyLoadIframes);
+            window.addEventListener('load', lazyLoadIframes);
+            // Run once on load to catch initial visible iframes
+            lazyLoadIframes();
+
+
+            // --- FADE-IN ON SCROLL ANIMATION ---
+            const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); // Only animate once
+                        observer.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
+            }, {
+                threshold: 0.1
+            });
 
             document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-            // --- NEW TYPEWRITER EFFECT ---
+            // --- TYPEWRITER EFFECT ---
             const words = ['Peace', 'Strength', 'Balance', 'Mindfulness', 'Clarity'];
             const textElement = document.getElementById('typewriter-text');
             let wordIndex = 0;
@@ -660,7 +642,7 @@
 
             function typeWriter() {
                 const currentWord = words[wordIndex];
-                
+
                 if (isDeleting) {
                     textElement.textContent = currentWord.substring(0, charIndex - 1);
                     charIndex--;
@@ -689,6 +671,3 @@
     </script>
 </body>
 </html>
-
-
-
